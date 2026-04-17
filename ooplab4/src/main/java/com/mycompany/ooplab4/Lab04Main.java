@@ -4,27 +4,21 @@
  */
 package com.mycompany.ooplab4;
 
-
 public class Lab04Main {
     public static void main(String[] args) {
-    
-    UniversityPolicy.showPolicyHeader();
-    System.out.println("University: " + UniversityPolicy.UNIVERSITY_NAME);
+        
+        StaffMember.showSystemName();
+        UniversityPolicy.showPolicyHeader();
 
-    Lecturer lec1 = new Lecturer("Dr. nimal siripala", "L001", "COST", 3, 50000.0);
-    LabAssistant asst1 = new LabAssistant("Kamal Perera", "A005", "Engineering", 40, 800.0);
+        
+        Lecturer lec1 = new Lecturer("Dr. nimal siripala", "L001", "COST", 3, 50000.0);
+        Lecturer lec2 = new Lecturer("Ms. ruwanthi", "L002", "COSC", 2, 45000.0);
+        LabAssistant asst1 = new LabAssistant("Kamal Perera", "A005", "Engineering", 40, 800.0);
 
-    System.out.println("\n--- Staff Estimates ---");
-    
-    
-    double lecPay = lec1.calculateMonthlyPayment();
-    System.out.println(lec1.getFullName() + " Bonus: " + UniversityPolicy.calculateBonus(lecPay));
-
-    
-    double asstPay = asst1.calculateMonthlyPayment();
-    System.out.println(asst1.getFullName() + " Bonus: " + UniversityPolicy.calculateBonus(asstPay));
-}
-
+        System.out.println("\n--- Staff Count Information ---");
+        
+        System.out.println("Total Staff Records Created: " + StaffMember.getStaffCount());
+    }
 }
  
 
