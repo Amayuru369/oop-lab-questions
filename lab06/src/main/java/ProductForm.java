@@ -49,11 +49,11 @@ public class ProductForm extends javax.swing.JFrame {
         bookTitleLabel.setToolTipText("");
 
         authorLabel.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
-        authorLabel.setText("               Author :");
+        authorLabel.setText("Unit Price:");
         authorLabel.setToolTipText("");
 
         bookTitleLabel2.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
-        bookTitleLabel2.setText("Unit Price :");
+        bookTitleLabel2.setText("Quantity:");
         bookTitleLabel2.setToolTipText("");
 
         productNameTextField.addActionListener(this::productNameTextFieldActionPerformed);

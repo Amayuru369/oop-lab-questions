@@ -65,6 +65,7 @@ public class AppointmentForm extends javax.swing.JFrame {
         calculateButton.setText("Calculate Fee");
         calculateButton.addActionListener(this::calculateButtonActionPerformed);
 
+        outputTextArea.setEditable(false);
         outputTextArea.setColumns(20);
         outputTextArea.setRows(5);
         jScrollPane1.setViewportView(outputTextArea);
@@ -94,10 +95,8 @@ public class AppointmentForm extends javax.swing.JFrame {
                         .addComponent(calculateButton)
                         .addGap(136, 136, 136))))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -111,10 +110,11 @@ public class AppointmentForm extends javax.swing.JFrame {
                                     .addComponent(pagesLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(titleTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(authorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(appointmentTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(patientCategoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(titleTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                            .addComponent(authorTextField)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(appointmentTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(patientCategoryComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -143,26 +143,35 @@ public class AppointmentForm extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(calculateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void calculateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateButtonActionPerformed
-        String title = authorTextField.getText();
-        String author = titleTextField.getText();
-        
+ String name = titleTextField.getText();
+    
+    
+    double baseFee = Double.parseDouble(authorTextField.getText());
+    
+    
+    String type = appointmentTypeComboBox.getSelectedItem().toString();
+    String category = patientCategoryComboBox.getSelectedItem().toString();
 
-        Book book = new Book(title, author, pages);
+    
+    Appointment appointment = new Appointment(name, type, category, baseFee);
 
-        outputTextArea.setText(
-            "Book Title: " + book.getTitle() + "\n" +
-            "Author: " + book.getAuthor() + "\n" +
-            "Pages: " + book.getPages() + "\n" +
-            "Book Type: " + book.getBookType()
-        );
+    
+    outputTextArea.setText(
+        "Patient Name: " + appointment.getPatientName() + "\n" +
+        "Appointment Type: " + appointment.getAppointmentType() + "\n" +
+        "Patient Category: " + appointment.getPatientCategory() + "\n" +
+        "Base Fee: " + appointment.getBaseFee() + "\n" +
+        "Final Fee: " + appointment.calculateFinalFee() + "\n" +
+        "Message: " + appointment.getAppointmentMessage()
+    );
     }//GEN-LAST:event_calculateButtonActionPerformed
 
     private void titleTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleTextFieldActionPerformed
