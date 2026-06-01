@@ -17,7 +17,7 @@ public class StudentMarkReportTest {
             int mark1 = report.getMarkAt(6);
             System.out.println("Mark: " + mark1);
         } catch (ArrayIndexOutOfBoundsException e) {
-            
+            // This exception occurs because index 6 is beyond the bounds of the array (valid indices are 0 to 3)
             System.out.println("Error: Selected mark position does not exist.");
         } finally {
             System.out.println("Array access checking completed.");
@@ -28,7 +28,7 @@ public class StudentMarkReportTest {
             int mark2 = report.getMarkAt(2);
             System.out.println("Mark: " + mark2);
         } catch (NumberFormatException e) {
-            
+         // This exception occurs because the element at index 2 is the string "absent", which cannot be parsed into an integer.   
             System.out.println("Error: Selected mark is not a valid number.");
         } finally {
             System.out.println("Number conversion checking completed.");

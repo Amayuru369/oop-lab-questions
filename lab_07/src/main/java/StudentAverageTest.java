@@ -25,3 +25,4 @@ public class StudentAverageTest {
         System.out.println("Program continues...");
     }
 }
+// This exception occurs because we are attempting integer division by zero.
