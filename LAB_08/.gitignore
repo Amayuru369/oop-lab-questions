@@ -1,0 +1,8 @@
+# Ignore compiled Java classes
+*.class
+
+# Ignore IDE list files
+*.lst
+
+# Ignore Maven build folder (highly recommended)
+target/
